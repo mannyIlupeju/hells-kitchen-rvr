@@ -1,17 +1,25 @@
 export class User {
     constructor(
         public readonly id: string, 
-        public name: string, 
+        public firstName: string, 
+        public lastName: string, 
         public email: string, 
-        public address: string,
-        public phone: string
+        public password:string,
+        public phone: string,
+        public termsAgreed: boolean,
+        public receiveEmails: boolean,
+        
     ) {
         if(!this.isValidEmail(email)) {
             throw new Error("Invalid email format");
         }
 
-        if(!this.isValidEmail(phone)) {
+        if(!this.isValidPhone(phone)) {
             throw new Error("Invalid phone number format");
+        }
+
+        if(!termsAgreed){
+            throw new Error("User must agree to terms")
         }
     }
 
